@@ -1,0 +1,93 @@
+\documentclass[12pt]{report}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mcode}
+
+\begin{document}
+
+\begin{center}
+	\large{MATH-6366}\\
+	\hfill \hfill \hfill \large{Homework \#1} \hfill \large{Kedar Grama}\\
+\end{center}
+
+\section*{Problem 1:}Consider the polynomial $P (x, b) := 2 x^6 + 3 x^4 - 6 b x^2 - 12 x$ with $b$ a real parameter.\\
+(i) Show that $P( . , 0)$ has a unique local minimizer on $ \mathbb{R} $ and give the equation obeyed by a local minimizer of $P (x, 0)$.\\
+(ii) Show that this minimizer occurs in $(0, 1)$ and is a global minimizer of $P (., 0)$.
+
+$Solution:$ It is easy to see that the function is continuously differentiable as it is a polynomial. The first derivative of the
+function $P(x,0) = 2 x^6 + 3 x^4 - 12 x$ is $P'(x,0)=12 x^5 + 12 x^3 - 12$. A critical point follows the equation
+$12 x^5 + 12 x^3 - 12 = 0 $ or 
+\begin{equation}
+x^5 + x^3 - 1 = 0
+\end{equation}
+
+From the second order sufficiency condition on p.71 in the reference book by Boyd et al., to prove convexity for a
+continuously differentiable function in $\mathbb{R}$ we only need to prove $P''(x,0)\geq0$, $P''(x,0) = 60x^4+36x^2 \geq 0$ as we
+only have even powers of the variable. Hence, the function is convex.
+
+We know that a critical point satisfies the equation $x^5+x^3=1$. Consider the following cases:\\
+(a) $x\leq 0$: At $x=0$, $x^3+x^5 = 0 \neq 1$, for $x<0$, $x^3+x^5<0 \neq 1$\\
+(b) $x\geq 1$: At $x=1$, $x^3+x^5 = 2 \neq 1$, for $x>1$, $x^3+x^5>2 \neq 1$\\
+Hence, all the critical points are in the interval $(0,1)$. But, we know that the function is strictly convex in the same interval as
+$P''(x,0)=60x^4+36x^2>0, x \in (0,1)$.
+
+Using the above statements we can say that the function is convex, critical points lie in the interval $(0,1)$ and also that the
+function is strictly convex in the same interval. Thus we can say that there is only one minimizer and follows (1).
+\\
+\\
+(iii) Find an interval of length $\delta \leq 0.01$ that contains the minimizer, include a description of how you found this
+interval.\\
+$Solution:$ I used the Matlab code included in the next page and found that the optimized lies in the interval (0.8369,0.8379):
+\begin{lstlisting}
+%Starting points
+b_j = 1;
+a_j = 0;
+z_j = 0.5;
+%Initializations
+tolReached = 1;
+%Search loop
+while( tolReached )
+    z_j = 0.5*(a_j+b_j);
+    d_j = EvalFnDer(z_j);
+    if( abs(d_j)<10*eps )
+        tolReached = 0;
+    end
+    if d_j>0
+        b_j = z_j;
+    else
+        a_j = z_j;
+    end
+    if abs(a_j-b_j)<0.001
+        tolReached = 0;
+    end
+end
+a_j
+b_j
+EvalFn(0.5*(a_j+b_j))
+function outVal = EvalFnDer( x )
+    outVal = 12*x.^5 +12*x.^3-12;
+end
+function outVal = EvalFn( x )
+    outVal = 2*x.^6 +3*x.^4-12*x;
+end
+\end{lstlisting}
+
+(iv) Give (good) lower and upper bounds on the value of this problem.\\
+$Solution:$ The function values lie in the interval $(-7.8839,\infty)$
+
+\pagebreak
+
+\section*{Problem 2:}
+(i) Show that for any $b\in\mathbb{R}$, the value of $$\alpha(b):=\inf_{x\in\mathbb{R}}P(x,b) \,\,  \mathrm{is\,finite}$$\\
+\\
+(ii) Show that $P(.,b)$ cannot have more than 3 critical points for any value of $b\in\mathbb{R}$, and has only one critical
+point when $b<0$.\\
+\\
+(iii) Show that, for any value of $b$, $P(.,b)$ has only one critical point $\hat{x}(b)$ in $(0,\infty)$ and that this critical
+point is a local minimizer of $P (., b)$.\\
+\\
+(iv) Show that for large enough $b$, $P (., b)$ has three critical points.\\
+\\
+(vi) Find the equations for the value $b_c$ of $b$ with the property that the function $P (., b_c )$ has exactly two critical points. Can you solve these equations (numerically or otherwise)?
