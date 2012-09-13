@@ -81,13 +81,59 @@ $Solution:$ The function values lie in the interval $(-7.8839,\infty)$
 
 \section*{Problem 2:}
 (i) Show that for any $b\in\mathbb{R}$, the value of $$\alpha(b):=\inf_{x\in\mathbb{R}}P(x,b) \,\,  \mathrm{is\,finite}$$\\
+$Solution:$ Let us consider two cases. First, when $b\in(-\infty,1]$ then for any $|x|>2$ the leading terms are $2x^6 + 3x^4$ and
+the $\inf P(.,b)$ always occurs in $x\in (-2,2)$. Since $b$ is finite the and the rest of the terms belong to a bounded polynomial
+the $\inf_{x \in \mathbb{R}}$ is bounded. Second, when $b\in (1,\infty )$, the leading term for the $\inf$ is $-6bx^2$ but
+for any $|x|\approx b$ the first two terms $2x^6 + 3x^4$ are larger than $-6bx^2$. So, the $\inf$ always occurs when $|x|<<b$
+hence in $-6bx^2$, $b$ is finite and $|x|<<b$ so the $\inf_{x \in \mathbb{R}}$ is bounded.
+\\
 \\
 (ii) Show that $P(.,b)$ cannot have more than 3 critical points for any value of $b\in\mathbb{R}$, and has only one critical
 point when $b<0$.\\
+$Solution:$ We observe:
+\begin{align*}
+P(.,b) &= 2x^6+3x^4-6bx^2-12x \\
+P'(.,b) &= 12(x^5+x^3-bx-1) \\
+P''(.,b) &= 12(5x^4+3x^2-b) \\
+P'''(.,b) &= 12(20x^3+6x) = 12x(20x^2+6)\\
+\end{align*}
+Also $x=0$ is not a root of $P'(.,b)$ and hence is not a critical point. $P'''(.,b)$ has only one real root at $x=0$
+and it's derivative is $P''''(.,b)=72(10x^2+1)>0$, strictly positive hence we can say that $P''(.,b)$ is strictly convex. $P''(.,b)$
+has a value of $P''(0,b)=-12b$ and it is the minimum and the function is symmetric on both sides of $x=0$.  Also, this is a
+monotonically increasing function. Any integral of this function can at most two critical points and hence at most three zero
+crossings. Hence there are at most 3 critical points in $P(.,b)$.
+
+Since, $P''(.,b) = 12(5x^4+3x^2-b)>0, x\in \mathbb{R}, b<0$, and the earlier observation that there were no critical points at
+$x=0$ we can say that the function $P(.,b), b<0$ is strictly convex. Hence it has only one critical point.
+\\
 \\
 (iii) Show that, for any value of $b$, $P(.,b)$ has only one critical point $\hat{x}(b)$ in $(0,\infty)$ and that this critical
 point is a local minimizer of $P (., b)$.\\
+$Solution:$ From (ii) $P'''(., b)>0, x\in (0,\infty)$. Hence, $P'(.,b),x\in (0,\infty)$ is a convex function with a value of
+$P'(0^+,b)\approx-12$ and it is monotonically increasing as $P'(0,b)\to \infty$ as $x\to \infty$ thus the first derivative must be
+zero at only one value. Hence there is only one critical point of $P(.,b)$ in $x\in (0,\infty)$. To show that this is a local
+minimum, solving for $b$ at $P'(., b)=0$ we get $b=12x^4+12x^2-\frac{1}{x}$. Substituting for $b$ in $P''(., b)$ we get
+$P''(., b)=12(4x^4+2x^2+\frac{1}{x}) > 0 $ when $P'(., b)=0, x \in (0,\infty)$. Hence we have proved that it is a local minimum.
+\\
 \\
 (iv) Show that for large enough $b$, $P (., b)$ has three critical points.\\
+$Solution:$ For $P'(.,b) = 12(x^5+x^3-bx-1), b>>0$, when $x<0, |x| \geq b$, it is easy to see that $|x^5+x^3-1|>|-bx|$. Hence for a
+large enough $b$, $P(.,b)<0$ in $x\in (-\infty,0)$. There is also an $x<0, |x|<b$ where $|x^5+x^3-1|<|-bx|$ so $P(.,b)>0$ and we
+know $P'(.,b) = -12$. Thus we have shown that there are two zero crossings of the first derivative hence there are two critical
+points and we have already shown that there is one and only one local minima in $x>0$.
 \\
-(vi) Find the equations for the value $b_c$ of $b$ with the property that the function $P (., b_c )$ has exactly two critical points. Can you solve these equations (numerically or otherwise)?
+\\
+(v) Prove that $\hat{x}(b)$ is always the global minimizer of $P (., b)$.\\
+$Solution:$ We have already shown for $b\leq 0$ that the function is convex. Hence $\hat{x}(b)$ is a global minimizer. In the case where $b>0$ we have for any $x_0<0$ there exists an $x_1=|x_0|$, $P(.,b) = 2x_0^6+3x_0^4-6bx_0^2-12x_0 > 2x_1^6+3x_1^4-6bx_1^2-12x_1 $ as $b$ is a positive constant. Hence $\hat{x}(b)$ is always a global minimizer.
+\\
+\\(vi) Find the equations for the value $b_c$ of $b$ with the property that the function $P (., b_c )$ has exactly two critical
+ points. Can you solve these equations (numerically or otherwise)?
+\\
+$Solution:$ $b_c$ is the solution to this optimization problem:
+\begin{align*}
+&\max_{b\in (0,\infty )} \, b\\
+b\leq & \frac{x^5+x^3-1}{x}, x \in (-\infty,0)
+\end{align*}
+
+\end{document}
+
