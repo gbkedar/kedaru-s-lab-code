@@ -82,7 +82,26 @@ that is in the null space of $A$ will not be accounted for in the solution.
 Prove: If $\{g_1,g_2,\dots,g_M\}$ are closed convex functions on $\mathbb{R}^N$ and \\
 $C:=\{x\in\mathbb{R}^N:g_j(x)\leq c_j$ for $1\leq j \leq M \}$ then $C$ is closed and
 convex.\\
-$Proof$: 
+$Proof$: We'll prove convexity and closedness separately.\\
+Closed set: Let
+\begin{align*}
+C^c=\mathbb{R}^N \backslash C &= \cup_{j=1}^M \{ x \in \mathbb{R}^N:g_j(x) > c_j \}
+\end{align*}
+For some $\epsilon>0$ $\exists$ $\delta_j >0$ for every $\hat{x}\in C^c$ such that
+$\forall x \in B(\hat{x},\delta_j)$, a ball, and \\
+$g_j(\hat{x})-\epsilon<g_j(x)<g_j(\hat{x})+\epsilon$. Let $\epsilon = g_j(\hat{x})-c_j>0$ 
+then $\exists$ $\delta_j'>0$ such that
+$\forall$ $x\in B(\hat{x},\delta_j')$, $g_j(x)>g_j(\hat{x})-\epsilon$ or $g_j(x)>c_j$. Hence $C^c$
+is and open set which implies $C$ is closed.
+
+Convexity: Since we have that $g_j(x)$ is convex by the definition of convexity we have for
+$\lambda \in [0,1] $ and some $x_1,x_2\in C$
+\begin{align*}
+g_j(\lambda x_1+ (1-\lambda)x_2) &\leq \lambda g_j(x_1) + (1-\lambda) g_j(x_2) \\
+& \leq \lambda c_j + (1-\lambda) c_j = c_j 
+\end{align*}
+Since $\lambda x_1+ (1-\lambda)x_2 \in C, \lambda \in [0,1] $, $C$ is convex.
+
 
 
 \end{document}
