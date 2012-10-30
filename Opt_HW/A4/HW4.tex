@@ -1,0 +1,71 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\begin{center}
+	\large{Optimization - MATH 6366}\\
+	\hfill \hfill \large{Homework \#4} \hfill \large{Kedar Grama}\\
+\end{center}
+
+\section*{Problem 1:}
+Suppose that $f:\mathbb{R}^2\rightarrow\mathbb{R}$ is continuously differentiable and
+has a local minimizer on the set $\mathbb{R}^2_+:=[0,\infty)\times [0,\infty)$ at a
+point $(a,0)$ with $a>0$.\\
+(i) What extremality conditions hold at this point? \\
+(ii) When $(0, 0)$ is a local minimizer of $f$ on $\mathbb{R}^2_+$ what conditions must
+hold at $(0, 0)$?\\
+(i) The extremality condition that holds at this point is:
+$$ \langle \nabla f(a,0), y-(a,0)^T \rangle \geq 0 \quad \forall y \in \mathbb{R}^2_+ $$
+(ii) In this case, as it is an edge point, there is one inequality:
+$$\langle \nabla f(0,0), y \rangle  \geq 0 \quad \forall y \in \mathbb{R}^2_+$$
+or
+$$ \nabla f(0,0) \in \mathbb{R}^2_+ $$
+
+\section*{Problem 2:}
+Let $\Delta'_N$ be the set of all probability vectors in $\mathbb{R}^N$ and
+$f:\mathbb{R}^N\rightarrow\mathbb{R}$ be a continuously differentiable function.\\
+(i)What extremality conditions hold at $e^{(1)}$ when $e^{(1)}=(1,0,\dots,0)$ is a
+local minimizer of $f$ on $\Delta'_N$?\\
+(ii)Suppose that $f$ is maximized on $\Delta'_N$ at a point a with each $a_j>0$.
+What extremality conditions hold at the point $a$?\\
+(iii) Find the maximum and minimum values of $f(x):=x_1x_2\dots x_N$ on $\Delta'_N$.\\
+(iv) Use the preceding result to find an upper bound for $f(x)$ that holds for all
+$x \in \mathbb{R}^N_+$ and involves $\sum_{j=1}^N x_j$\\
+\\
+$Solution:$ (i) $\Delta'_N:=\{ x \in \mathbb{R}^N: \sum_{i=1}^N x_i=1, x_i\geq 0 \}
+\implies e^{(1)}$ is an edge point of $\Delta'_N$ the extremality conditions that hold
+at $e^{(1)}=(1,0,\dots,0)$ when it is a minimizer of $f$ on $\Delta'_N$ is that
+$$\nabla f(e^{(1)}) \in N_{e^{(1)}}(\Delta'_N)$$ 
+Let $\nabla f(e^{(1)})=d$, from the above we have:
+\begin{align*}
+d \in \mathbb{R}^N: \langle d, y-e^{(1)} \rangle &\geq 0, \quad y \in \Delta'_N \\
+-d_1 + \sum_{i=1}^N d_i y_i \geq 0, \quad \sum_{i=1}^N y_i =1, y_i \geq 0 \forall i \\
+\sum_{i=1}^N d_i y_i \geq d_1, \quad \sum_{i=1}^N y_i =1, y_i \geq 0 \forall i 
+\end{align*}
+$\implies d_1\leq d_2, d_1\leq d_3, \dots ,d_1\leq d_N$
+\\
+(ii) Let us call the point $\hat{x}$ and $\nabla f(\hat{x}):=d$. Using the same
+notation as the above:
+$$\sum_{i=1}^Nd_iy_i\leq\sum_{i=1}^N d_i a_i ,\quad\sum_{i=1}^N y_i =1,y_i\geq 0
+\text{ and } 0<a_i<1 \forall i $$
+$\implies d_1 = d_2 = \dots = d_N = 0$ or $\nabla f(\hat{x})=0$
+\\
+
+\section*{Problem 3:}
+Suppose $y \in \mathbb{R}^N$ and $K$ is the hyperplane defined by
+$\langle a,x \rangle = b$ with $\|a\|_2 = 1$. Show that the Euclidean distance from
+$y$ to $K$ is $d(y,K) = |\langle a,y \rangle - b|$ by solving a minimization
+problem.\\
+Interpret this result geometrically when $N=2$, $a=\frac{1}{\sqrt{2}}(1,1)$ and find
+the closest point on the line $K$ to $y = (2, 3)$ when $b = 2^{-\frac{1}{2}}$. \\
+\\
+
+\end{document}
+
