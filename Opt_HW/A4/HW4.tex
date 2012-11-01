@@ -57,6 +57,16 @@ $$\sum_{i=1}^Nd_iy_i\leq\sum_{i=1}^N d_i a_i ,\quad\sum_{i=1}^N y_i =1,y_i\geq 0
 \text{ and } 0<a_i<1 \forall i $$
 $\implies d_1 = d_2 = \dots = d_N = 0$ or $\nabla f(\hat{x})=0$
 \\
+(iii) When $f(x):=x_1x_2 \dots x_N$ on $\Delta'_N$ since $x_j\geq 0$, the minimum
+value of $f(x)$ is 0 and for the maximum, as
+$\sqrt[N]{x_1x_2\dots x_N}\leq(\frac{x_1+x_2+\dots x_N}{N})^N=(\frac{1}{N})^N$. Hence
+the maximum value of $f(x)$ is $(\frac{1}{N})^N$ and is attained when
+$x_1=x_2=\dots =x_N=\frac{1}{N}$.\\
+\\
+(iv) When $f(x)$ is defined on $\mathbb{R}^N_+$, similarly we have
+$f(x)\leq \frac{(\sum_{i=0}^N x_i)^N}{N^N}$ and again this is attained when
+$x_1=x_2=\dots =x_N$. So the upper bound is
+$\frac{(\sum_{i=0}^N x_i)^N}{N^N} \in [0,+\infty)$
 
 \section*{Problem 3:}
 Suppose $y \in \mathbb{R}^N$ and $K$ is the hyperplane defined by
@@ -66,6 +76,28 @@ problem.\\
 Interpret this result geometrically when $N=2$, $a=\frac{1}{\sqrt{2}}(1,1)$ and find
 the closest point on the line $K$ to $y = (2, 3)$ when $b = 2^{-\frac{1}{2}}$. \\
 \\
+$Solution:$ Let $f(x):=\|x-y\|_2^2$ constrained by
+$K:=\{x\in\mathbb{R}^N,\langle a,b \rangle = b\}$. Let $\alpha:= \inf_{x\in K} f(x) $
+and $g(x):=\langle a,b \rangle -b$. So, $d(y,K)=\sqrt{\alpha}$. By the Lagrange
+multiplier rule, if $\hat{x}$ minimizes $f(x)$ on $K$, $\exists$ a $\lambda \in 
+\mathbb{R}_+$ such that $\nabla f(\hat{x})=\lambda \nabla g(\hat{x})$ and 
+$ g(\hat{x})=0$. Hence, by multiplying the following by $a^T$ and $\alpha$
+\begin{align*}
+\alpha(\hat{x}-y) &=\lambda a \quad & \quad \langle \hat{x},a\rangle&=b\\
+\alpha a^T\hat{x}-\alpha a^T y &= a^Ta \lambda =  \|a\|_2^2 \lambda = \lambda \quad &
+\quad \alpha a^T \hat{x} &= \alpha b
+\end{align*}
+Using the above two equations, we have $\lambda = \alpha(b-a^Ty)$ and 
+$\hat{x} = y+\frac{1}{\alpha} \lambda a$. Thus
+$\alpha = \|(y+\frac{\lambda a}{\alpha})-y\|_2^2 = \|\frac{\lambda a}{\alpha}\|^2_2
+\implies d(y,K)= \|\frac{\lambda a}{\alpha}\|_2=|\frac{\lambda}{\alpha}|\|a\|_2 
+= |\frac{\lambda}{\alpha}|$ or $d(y,K)= |\langle y,a \rangle-b|$
+
+When  $N=2$, $a=\frac{1}{\sqrt{2}}(1,1)$, $y = (2, 3)$ and $b = 2^{-\frac{1}{2}}$ the
+given formulation solves for the distance between the point $y$ and the line
+$x_1+x_2=1$ and from the above result 
+$d=|2^{-\frac{1}{2}}(2+3)-2^{-\frac{1}{2}}|=2\sqrt 2$ and the closest point 
+$y^* = y-da = (2,3)-(\frac{2\sqrt 2}{\sqrt 2},\frac{2\sqrt 2}{\sqrt 2})=(0,1)$
 
 \end{document}
 
