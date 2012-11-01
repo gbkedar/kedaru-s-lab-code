@@ -1,0 +1,184 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\begin{center}
+	\large{Optimization - MATH 6366}\\
+	\hfill \hfill \large{Homework \#5} \hfill \large{Kedar Grama}\\
+\end{center}
+
+\section*{Problem 1:}
+The matrices are:
+\begin{align*}
+A &= \left(\begin{array}{c c}
+1 & 1\\
+2 & 4\\
+1 & -1
+\end{array} \right),
+A^T = \left(\begin{array}{c c c}
+1 & 2 & 1\\
+1 & 4 & -1
+\end{array} \right),
+A^TA = \left(\begin{array}{c c}
+6 & 8\\
+8 & 18\\
+\end{array} \right),
+b = \left(\begin{array}{c c}
+1\\
+3\\
+1
+\end{array} \right)\\
+A^Tb&= \left(\begin{array}{c c}
+8\\
+12
+\end{array} \right)\\
+\end{align*}
+The sketch is:\\
+\includegraphics[scale=0.5]{fig1}
+
+\section*{Problem 2:}
+The points of intersection are:
+$L1,L2 = p_1(\frac{1}{2},\frac{1}{2})$,
+$L2,L3 = p_2(\frac{7}{6},\frac{1}{6})$, and \\
+$L3,L1 = p_3(1,0)$\\
+\\
+The parametric a for points inside the triangle with these three points as vertices is the
+Barycentric coordinate system which is given by:\\
+$\textbf{r} = \lambda_{1} \textbf{p}_{1} + \lambda_{2} \textbf{p}_{2} + \lambda_{3}
+\textbf{p}_{3} $
+where $\lambda_{1}$, $\lambda_{2}$, $\lambda_{3}$ are the area coordinates subjected to the
+constraint $\lambda_{1} + \lambda_{2} + \lambda_{3} = 1$ and $0 \leq \lambda_{1},\lambda_{2},
+\lambda_{3}\leq 1$ for points inside the triangle.
+
+\section*{Problem 3:}
+The triangle lies in the region above the lines $L1,L3$ and below $L2$. Converting it to the form
+$Bx\leq d$ we have
+\begin{align*}
+\left\{\begin{array}{r l}
+-x_1-x_2  & \leq -1\\
+2x_1+4x_2 & \leq 3\\
+x_1-x_2   & \leq 1
+\end{array} \right. \implies
+B = \left(\begin{array}{r l}
+-1  & -1\\
+2 & 4 \\
+1 & -1
+\end{array} \right),
+d = \left(\begin{array}{c}
+-1\\
+3\\
+1
+\end{array} \right)
+\end{align*}
+
+\section*{Problem 4:}
+The explicit form of $q(x)=\|Ax\|^2_2=(x_1+x_2)^2+(2x_1+4x_2)^2+(x_1-x_2)^2 $ or \\
+$q(x)=2(x_1^2+x_2^2)+4(x_1+2x_2)^2=6x_1^2+18x_2^2+16x_1x_2$. For the eigenvalues of $A^TA$ we have:
+\begin{align*}
+|A^TA-\lambda I| &= \left|\begin{array}{c c}
+6-\lambda & 8\\
+8 & 18-\lambda\\
+\end{array} \right|
+= (6-\lambda )(18-\lambda )-64=\lambda^2-24\lambda-44=0\\
+\lambda_1=2&,\lambda_2=22 \quad \text{are the eigenvalues}
+\end{align*}
+
+For $ q(x)\geq c\|x\|^2_2 \forall x \in \mathbb{R}^2$ any $c$ can be used when $x_1=x_2=0$. When
+$x_1 \neq 0, x_2\neq 0$:
+\begin{align*}
+c&\leq \frac{q(x)}{\|x\|_2^2}\\
+ &= \inf_{\textbf{x}\in \mathbb{R}^2, \textbf{x}\neq 0} \frac{2(x_1^2+x_2^2)+4(x_1+2x_2)^2}{(x_1^2+x_2^2)}
+  =2+\inf_{\textbf{x}\in \mathbb{R}^2, \textbf{x}\neq 0}\frac{4(x_1+2x_2)^2}{(x_1^2+x_2^2)}
+\end{align*}
+or $c=2$ is the largest value when $\textbf{x}\neq 0$
+
+\section*{Problem 5:}
+The least squares system of equations associated with this system is minimizing
+$f(x):=\|Ax-b\|_2^2$ and from the sufficiency conditions in HW\#3 we have:
+$\nabla f(\textbf{x}^*)=0$ or $A^T(A\textbf{x}^*-b)=0$ or $A^TA\textbf{x}^*=A^Tb$.
+Using the results in problem 1 we get the linear system: $6x_1^*+8x_2^*=8$ and $8x_1^*+18x_2^*=12$.
+Solving it we get: $x_1^*=(\frac{12}{11})$ and $x_2^*=(\frac{2}{11})$. This lies inside the
+triangle as marked by the red x in the figure for problem 1.
+\begin{align*}
+B\textbf{x}^* &= \left(\begin{array}{c}
+-1.2727 \\
+2.9091 \\
+0.9091
+\end{array} \right)\leq
+d = \left(\begin{array}{c}
+-1\\
+3\\
+1
+\end{array} \right)
+\end{align*}
+
+\section*{Problem 6:}
+\begin{align*}
+AA^T=\left(\begin{array}{c c c}
+2  &   6  &   0 \\
+6  &  20  &  -2 \\
+0  &  -2  &   2
+\end{array}\right)
+\end{align*}
+From problem 4 we have the eigenvalues of $AA^T$ are 0, 2 and 22. So, the sigular values of A are 
+the squareroots of these eigenvalues $0,\sqrt{2}$ and $\sqrt{22}$. The singular values of $A^T$ are
+the square roots of the eigenvalues $A^TA$ which are $\sqrt{2}$ and $\sqrt{22}$.
+
+\section*{Problem 7:}
+The changed least squares system of equations associated with this system is minimizing
+$\hat{f}(x):=\|C\textbf{x}-e\|_2^2$ with:
+\begin{align*}
+C &= \left(\begin{array}{c c}
+1 & 1\\
+2 & 2\\
+1 & -1
+\end{array} \right),
+e = \left(\begin{array}{c c}
+1\\
+1.5\\
+1
+\end{array} \right)
+\end{align*}
+and this again satisfies $C^TC\hat{\textbf{x}}^*=C^Te$. Solving the linear system with
+\begin{align*}
+C^TC &= \left(\begin{array}{c c}
+3 & 2\\
+2 & 6
+\end{array} \right),
+C^Te = \left(\begin{array}{c}
+3.5\\
+3
+\end{array} \right)
+\end{align*}
+we get $\hat{x_1}^*=\frac{15}{14}$ and $\hat{x_2}^*=\frac{1}{7}$, here
+\begin{align*}
+B\hat{\textbf{x}}^* &= \left(\begin{array}{c}
+-1.2143 \\
+2.7143 \\
+0.9286 
+\end{array} \right)\leq
+d = \left(\begin{array}{c}
+-1\\
+3\\
+1
+\end{array} \right)
+\end{align*}
+Hence it is still inside the triangle as shown by green x in figure for problem 1.
+
+This solution is different to the solution in problem 5 because we are minimizing two different
+objectives:
+\begin{align*}
+f(x)&=\|Ax-b\|^2_2=(x_1+x_2-1)^2+(2x_1+4x_2-3)^2+(x_1-x_2-1)^2 \\
+\hat{f}(x)&=\|C{x}-e\|^2_2=(x_1+x_2-1)^2+ \left(\frac{1}{2}(2x_1+4x_2-3)\right)^2+(x_1-x_2-1)^2 
+\end{align*}
+This changes the residuals in the solution of the linear equations as seen above and hence we have
+different points as solutions.
+
+\end{document}
