@@ -1,0 +1,99 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\begin{center}
+	\large{Optimization - MATH 6366}\\
+	\hfill \hfill \large{Homework \#6} \hfill \large{Kedar Grama}\\
+\end{center}
+
+\section*{Problem 1:}
+Verify that each of the following functions is convex on $\mathbb{R}$ by evaluating their derivatives. Then find their convex
+conjugates.\\
+(i) $f(x):=\frac{1}{p} |x|^p, p\in(1,\infty)$
+
+Writing $f(x)=\frac{1}{p} (x^2)x^{\frac{p}{2}}$ we have:
+\begin{align*}
+f'(x) &=\frac{1}{p}\frac{p}{2}2x (x^2)x^{\frac{p-2}{2}} = x(x^2)^{\frac{p-2}{2}} \\
+f''(x)&= (x^2)^{\frac{p-2}{2}} + \frac{p-2}{2}2x.x(x^2)^{\frac{p-4}{2}} = (x^2)^{\frac{p-2}{2}}+(p-2)(x^2)^{\frac{p-2}{2}} \\
+f''(x)&=(x^2)^{\frac{p-2}{2}}(p-1) \quad \because x\in\mathbb{R}, p\in(1,\infty) \\
+f''(x)&=|x|^{p-2}(p-1) > 0 \quad \text{Hence $f(x)$ is convex}
+\end{align*}
+The convex conjugate is $f^*(y)=\sup\{\langle y,x \rangle -f(x)|x\in\mathbb{R}\}$ or \\$f^*(y)=\sup\{xy-f(x)|x\in\mathbb{R}\}$.
+As the function is convex it is easy to see that the $\sup $ is obtained when $y-f'(x)=0$ or
+$y=(x^2)^{\frac{p-1}{2}}$ or $y^{\frac{1}{p-1}}=x$. So,
+\begin{align*}
+f^*(y) &= x.x(x^2)^{\frac{p-2}{2}}-\frac{1}{p} |x|^p = |x|^p - \frac{1}{p} |x|^p = \frac{p-1}{p}|y^{\frac{1}{p-1}}|^p \\
+f^*(y) &= \frac{p-1}{p}|y|^{\frac{p}{p-1}}
+\end{align*}
+\\
+(ii) $f(x):=e^x$ 
+
+It is easy to see the function is convex as $f''(x)=f'(x)=e^x>0$ $\forall x\in \mathbb{R}$. Again the convex conjugate is
+$f^*(y)=\sup\{xy-f(x)\}$ and the $\sup$ is obtained for $y>0$ when $f'(x)=y$ or $y=e^x$ or $x=\ln y$. So, when \\
+$y>0$, $f^*(y)= xe^x -e^x = e^x(x-1)$ $f^*(y)= y((\ln y)-1)$, when \\ $y=0$, $f^*(y)=\sup\{-f(x)\}=\sup\{-e^x\}=0$ and when \\
+$y<0$, $f^*(y)=\sup\{xy-e^x\}=\infty$ when $x\to -\infty$. So,
+\begin{equation*}
+f(x)=\left\{
+\begin{array}{l l}
+y((\ln y)-1) & y>0 \\
+0 & y=0 \\
+\infty & y<0
+\end{array}
+\right.
+\end{equation*}
+\\
+\\
+\\
+(iii) $f(x):=\cosh x$
+
+Writing $f(x)=\cosh x = \frac{1}{2}(e^x+e^{-x})$ we have $f'(x)=\frac{1}{2}(e^x-e^{-x})$ and $f''(x)=\frac{1}{2}(e^x+e^{-x})>0$ 
+$\forall x\in \mathbb{R}$ hence the function is convex. Again the convex conjugate is $f^*(y)=\sup\{xy-f(x)\}$ and the $\sup$ is
+obtained when $f'(x)=y$ or $y=\frac{1}{2}(e^x-e^{-x})$ or $(e^x)^2-2ye^x-1=0$. So, the $\sup$ is at
+$$e^x= \frac{2y+\sqrt{4y+4}}{2} = y+\sqrt{y^2+1} $$ Hence, 
+$$ f^*(y) = y \ln(y+\sqrt{y^2+1})  - \frac{1}{2}\left(y+\sqrt{y^2+1}+\frac{1}{y+\sqrt{y^2+1}} \right)  $$ or
+$$ f^*(y) = y \ln(y+\sqrt{y^2+1}) - \frac{y^2+y\sqrt{y^2+1}+1}{y+\sqrt{y^2+1}} $$
+
+\section*{Problem 2:}
+Suppose that $f(x) \leq g(x)$ on $\mathbb{R}^N$, show that $f^*(y) \geq g^*(y)$ for all $y \in \mathbb{R}^N$.
+
+$Proof:$ As $f(x) \leq g(x)$, $-f(x) \geq -g(x)$ and
+$\langle x, y \rangle -f(x) \geq \langle x, y \rangle -g(x)$,$\forall y\in\mathbb{R}^N$. Taking the sup on both
+sides $\sup_x\{\langle x,y \rangle-f(x)\} \geq \sup_x\{\langle x,y \rangle-g(x)\}$ and using the definition of convex conjugate
+functions we have $f^*(y) \geq g^*(y)$.
+
+\section*{Problem 3:}
+Suppose that $A$ is a non-singular $N \times N$ matrix and $g(x) := f(Ax)$.\\
+(i)Show that $f$ is convex on $\mathbb{R}^N$ implies $g$ is convex on $\mathbb{R}^N$.
+$Proof:$ From the definition we have \\ $g(\lambda x_1+(1-\lambda )x_2) = f(A(\lambda x_1+(1-\lambda )x_2))$ or \\
+$g(\lambda x_1+(1-\lambda )x_2) = f(\lambda Ax_1+(1-\lambda )Ax_2)$. Since A is non-singular $N \times N$ matrix the map
+$\hat{x}_1=A x_1$ and $\hat{x}_2=A x_2$ is unique and \\
+$g(\lambda x_1+(1-\lambda )x_2) = f(\lambda \hat{x}_1+(1-\lambda )\hat{x}_2)$ and using the definition of convexity \\
+$g(\lambda x_1+(1-\lambda )x_2) \leq \lambda f(\hat{x}_1)+(1-\lambda )f(\hat{x}_2)$ or \\
+$g(\lambda x_1+(1-\lambda )x_2) \leq \lambda f(Ax_1)+(1-\lambda )f(Ax_2)$ using the definition of $g(x)$ we have \\
+$g(\lambda x_1+(1-\lambda )x_2) \leq \lambda g(x_1)+(1-\lambda )g(x_2)$ hence $g(x)$ on $\mathbb{R}^N$ is convex 
+if $f(x)$ is convex on $\mathbb{R}^N$.
+\\ \\
+(ii) If $f$ is differentiable at a point $x(0)$ show that $g$ is differentiable at $x(0)$ and find the gradient vector 
+$\nabla g(x(0))$.
+\\
+\\
+(iii) Express the convex conjugate $g^*(y)$ in terms of $f^*$.
+\section*{Problem 4:}
+A function $f:\mathbb{R}^N\to\mathbb{R}$ is said to be even if $f(-x) = f(x)$ for all $x \in \mathbb{R}^N$. Show that the
+conjugate of an even function is even.\\
+
+\section*{Problem 5:}
+Suppose $K$ is a closed convex cone in $\mathbb{R}^N$, and $I_K$ is its indicator functional. Prove carefully that the conjugate
+function of $I_K$ is again the indicator functional of a cone and describe this polar cone $K^0$. Show that the set of points in
+the plane that obey $x_2 \geq |x_1|$ is a closed convex cone and determine its polar cone.
+
+\end{document}
+
