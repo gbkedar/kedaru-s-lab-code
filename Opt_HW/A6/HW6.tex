@@ -72,6 +72,7 @@ functions we have $f^*(y) \geq g^*(y)$.
 \section*{Problem 3:}
 Suppose that $A$ is a non-singular $N \times N$ matrix and $g(x) := f(Ax)$.\\
 (i)Show that $f$ is convex on $\mathbb{R}^N$ implies $g$ is convex on $\mathbb{R}^N$.
+
 $Proof:$ From the definition we have \\ $g(\lambda x_1+(1-\lambda )x_2) = f(A(\lambda x_1+(1-\lambda )x_2))$ or \\
 $g(\lambda x_1+(1-\lambda )x_2) = f(\lambda Ax_1+(1-\lambda )Ax_2)$. Since A is non-singular $N \times N$ matrix the map
 $\hat{x}_1=A x_1$ and $\hat{x}_2=A x_2$ is unique and \\
@@ -83,17 +84,59 @@ if $f(x)$ is convex on $\mathbb{R}^N$.
 \\ \\
 (ii) If $f$ is differentiable at a point $x(0)$ show that $g$ is differentiable at $x(0)$ and find the gradient vector 
 $\nabla g(x(0))$.
-\\
-\\
-(iii) Express the convex conjugate $g^*(y)$ in terms of $f^*$.
+\\-\\
+(iii) Express the convex conjugate $g^*(y)$ in terms of $f^*$.\\-
 \section*{Problem 4:}
 A function $f:\mathbb{R}^N\to\mathbb{R}$ is said to be even if $f(-x) = f(x)$ for all $x \in \mathbb{R}^N$. Show that the
 conjugate of an even function is even.\\
+$Proof:$ Let the convex conjugate of the function $f(x)$ be $g(y):=\sup\{\langle x,y\rangle-f(x)\}$ and 
+$f(-x)$ be $\hat{g}(y):=\sup\{\langle -x,y\rangle-f(-x)\}$. Using the definition of even functions $\hat{g}(y)=g(y)$ and all that
+remains to be shown is that $\hat{g}(y)=g(-y)$.
+\begin{align*}
+\hat{g}(y)&=\sup\{\langle -x,y\rangle-f(-x)\} \\
+	&= \sup\{\langle x,-y\rangle-f(-x)\} \quad &\text{ signs in the inner product commute}\\
+	&= \sup\{\langle x,-y\rangle-f(x)\} 	 &\text{ by definition of even functions}\\
+	&= g(-y)
+\end{align*}
+Hence the convex conjugates of even functions are also even.
 
 \section*{Problem 5:}
 Suppose $K$ is a closed convex cone in $\mathbb{R}^N$, and $I_K$ is its indicator functional. Prove carefully that the conjugate
 function of $I_K$ is again the indicator functional of a cone and describe this polar cone $K^0$. Show that the set of points in
 the plane that obey $x_2 \geq |x_1|$ is a closed convex cone and determine its polar cone.
 
+Part 1:\\
+%Since $K$ is a closed convex cone $\mathbb{R}^N$, $I_K$ it's idicator functional describes a subspace on $\mathbb{R}^N$.
+The convex conjugate of $I_k$ cone is
+$f^*_{I_k}(y)= \sup_x\{\langle x,y \rangle-I_k(x)\}=\sup_x\{\langle x,y \rangle|x\in K\}$. If the cone $K$ is not empty, then
+the sup is 0 if $\langle x, y \rangle = 0 \forall x\in K$, otherwise it is $\infty$. $f^*_{I_k}(y)$ is the indicator for the
+space orthogonal to the cone $K$. To prove that it is a cone we observe that the indicator fuctional is for the the set 
+$K^0=\{ y\in\mathbb{R}^N| \langle y,x \rangle \leq 0, \forall x \in K\} $ and since $K$ can be written as a non-empty set of
+vectors $a_i$ such that non-negative linear combinations of vectors $\{a_i|a_i \in I_k\}$ and $x$ that are all in $K$.
+We can rewrite $K^0=\{ y| \langle y,a_i \rangle \leq 0, \forall a_i \in I_k\} $ and it is easy to see that this is also a cone as
+it is a set of linear combinations of a set of vectors. $K^0$ is the polar cone of $K$ in $\mathbb{R}^N$.\\
+Part 2:\\
+$Proof:$ The definition for the set of points on the plane can be decribed as \\
+$C:=\{ x\in \mathbb{R}^N: x_2\geq |x_1|, \sum_{i=1}^N a_i x_i = b, a_i,b\in\mathbb{R}, \sum_{i=1}^N a_i^2=1  \}$ \\
+In it's complement set \\
+$C^c:=\{ x\in \mathbb{R}^N: x_2 < |x_1|, \sum_{i=1}^N a_i x_i = b, a_i,b\in\mathbb{R}, \sum_{i=1}^N a_i^2=1  \}$ for any point
+$x^*$ there exists a number $\epsilon=|x_1|-x_2>0$ for any $\mathbf{x}\in B(x^*,\epsilon), \mathbf{x}\in C^c$. Hence $C^c$ is
+open and $C$ is closed.
+
+Take two points $\mathbf{x},\mathbf{y} \in C$ and $\lambda\in[0,1]$. For any $\lambda\mathbf{x}+(1-\lambda)\mathbf{y}$ we have:
+\begin{align*}
+\left\{
+\begin{array}{l}
+\lambda x_2+(1-\lambda )y_2 \geq \lambda x_1|+(1-\lambda )y_1| \geq |\lambda x_1+(1-\lambda )y_1 |,
+	\because x_2\geq |x_1|, y_2\geq |y_1|, \\
+\sum_{i=1}^N a_i(\lambda x_i+(1-\lambda )y_i) = \lambda b + (1-\lambda )b = b, \because\sum_{i=1}^N a_i x_i = b,
+	\sum_{i=1}^N a_i y_i = b,
+\end{array}
+\right.
+\end{align*}
+Above $\implies\lambda\mathbf{x}+(1-\lambda)\mathbf{y}\in C$ so it is a closed, convex set.
+If $k\geq 0, \mathbf{x}\in C$ then $kx_2\geq |kx_1|$ and $k\sum_{i=1}^N a_i x_i = kb \in \mathbb{R}$ hence $k\mathbf{x}\in C$.
+Hence, $C$ is a closed, convex cone. It's polar cone is
+$C^0 := \{y\in \mathbb{R}^N: <y,x>\leq 0, \forall x \in C \}$
 \end{document}
 
