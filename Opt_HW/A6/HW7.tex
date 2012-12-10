@@ -1,0 +1,84 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+
+\begin{center}
+	\large{Optimization - MATH 6366}\\
+	\hfill \hfill \large{Homework \#7} \hfill \large{Kedar Grama}\\
+\end{center}
+Please notify me on my grade
+\section*{Problem 1:}
+(i) Using the given conditions we have:
+\begin{align*}
+\sum_{j=1}^{N} \left( c_j-\mu \right)^2x_j &= \sigma^2 \\
+\sum_{j=1}^{N} \left( c_j^2x_j - 2c_jx_j \mu + \mu^2x_j \right) &= \sigma^2 \\
+\sum_{j=1}^{N}c_j^2x_j - 2\left( \sum_{j=1}c_jx_j \right) \mu + \left( \sum_{j=1}^{N}x_j \right) \mu^2 &= \sigma^2 \\
+\sum_{j=1}^{N}c_j^2x_j - 2\mu.\mu - 1.\mu^2 &= \sigma^2 \\
+\sum_{j=1}^{N}c_j^2x_j &= \sigma^2+\mu^2
+\end{align*}
+As $0<c_1 \leq c_2 \dots \leq c_N $, $c_1 \leq \sigma^2+\mu^2 \leq c_N$ will generate a non-empty set and let's denote
+this set as $\mathfrak{C}$
+
+Take two points $x_1,x_2 \in \mathfrak{C}$ we need every point in $\lambda x_1 + (1-\lambda) x_2 \in \mathfrak{C}$, for 
+$0\leq \lambda \leq 1 $
+From the first given condition:
+\begin{align*}
+\sum_{j=1}^{N} \left( \lambda x_{1j} + (1- \lambda) x_{2j} \right) 
+= \lambda(\sum x_{1j})+(1-\lambda)(\sum x_{2j}) = \lambda + (1-\lambda) = 1
+\end{align*}
+From the second given condition:
+\begin{align*}
+\sum_{j=1}^{N} c_j\left( \lambda x_{1j} + (1- \lambda) x_{2j} \right)
+= \lambda(\sum c_j x_{1j} )+(1-\lambda)(\sum c_j x_{2j}) =  \lambda \mu + (1- \lambda) \mu = \mu
+\end{align*}
+From the third given condition:
+\begin{align*}
+\sum_{j=1}^{N} ( c_j-\mu )^2 ( \lambda x_{1j} + (1- \lambda) x_{2j} )
+&=  \lambda \left( \sum( c_j-\mu )^2 x_{1j} \right) +(1- \lambda) \sum( c_j-\mu )^2x_{2j}\\
+&= \lambda \sigma^2 + (1- \lambda) \sigma^2 = \sigma^2
+\end{align*}
+Hence the points are within $\mathfrak{C}$ $\implies$ the set is convex.\\
+\\
+(ii) The Lagrangian for this problem is: $L(x,\lambda)= S(x) + \sum_{i=1}^3 \lambda_i g_i(x) $ where $b_i(x)$ are the given
+constraints $g_1 = \sum_{j=1}^Nx_j=1$, $g_2 = \sum_{j=1}^Nc_jx_j=\mu$ and $g_3 = (c_j-\mu)^2x_j=\sigma^2$\\
+\\
+(iii) The minimizers $\hat{x}$ of this problem satisfy:\\
+$\nabla_x L(\hat{x},\lambda)=\nabla_x(S(\hat{x})+\sum g_i(\hat{x})\lambda_i)=0 $ and $g_i(\hat{x})=b_i$,
+$\lambda_i\geq 0, i=1,2,3$ where 
+\begin{align*}
+A^T = \nabla_x g(\hat{x}) &= \left[\begin{array}{c c c c}
+1 & 1 & \dots &1 \\
+c_1 & c_2 & \dots & c_N \\
+(c_1-\mu)^2 & (c_2-\mu)^2 & \dots & (c_N-\mu)^2
+\end{array}\right]^T,
+b= \left[ \begin{array}{c}
+1 \\
+\mu \\
+\sigma^2
+\end{array} \right] \\
+\lambda &= \left[
+\begin{array}{c}
+\lambda_1 \\ \lambda_2 \\ \lambda_3 
+\end{array}
+\right] \text{ and }
+\nabla_x S(\hat{x}) = \left[ \begin{array}{c}
+\ln x_1 + 1 \\
+\ln x_2 + 1 \\
+\vdots \\
+\ln x_N + 1 \\
+\end{array} \right] 
+\end{align*}
+This can also be written as $\nabla_x L(\hat{x},\lambda) = \nabla_xS(\hat{x})+A^T\lambda=0 $\\
+\\
+(iv) It is easy to see as the problem is defined only the set $\mathbb{R}^N_+$ hence each component $x_j$ has to be positive
+or $\hat{x}_j>0$ as ln 0 is undefined.
+
+\end{document}
+
