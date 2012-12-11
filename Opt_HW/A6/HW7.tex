@@ -80,5 +80,66 @@ This can also be written as $\nabla_x L(\hat{x},\lambda) = \nabla_xS(\hat{x})+A^
 (iv) It is easy to see as the problem is defined only the set $\mathbb{R}^N_+$ hence each component $x_j$ has to be positive
 or $\hat{x}_j>0$ as ln 0 is undefined.
 
+\section*{Problem 2:}
+(i) The Lagrangian for this problem is: $L(x,\lambda) = f(x) + \sum_{i=1}^4 \lambda_i g_i(x)$, where:
+$g_1(x) = -x_1 < 0 $,  $g_2(x) = -x_2 < 0 $,  $g_3(x) = -x_3 < 0 $ and \\ $g_4(x) = x_1 + x_2 + x_3-1 \leq 0$\\
+\\
+(ii) The extremality conditions that hold at $\hat{x}$ are:
+\begin{align*}
+\nabla_x L(\hat{x},\lambda)= 0 \text{ or }
+\left[ \begin{array}{c}
+1-\frac{1}{\hat{x}_1^2}-\lambda_1 \\
+2-\frac{1}{\hat{x}_2^2}-\lambda_2 \\
+3-\frac{1}{\hat{x}_3^2}-\lambda_3 
+\end{array} \right] = 
+\left[ \begin{array}{c}
+0 \\ 0 \\ 0
+\end{array} \right],
+\end{align*}
+$\lambda_i\geq 0$, $\lambda_i g_i(\hat{x}) = 0$ and $g_i(\hat{x}) \leq 0$ where $i=1,2,3,4$ \\
+\\
+(iii) The set $\mathfrak{C}=\{ x\in \mathbb{R}^3:g_i<0, i=1,2,3,4 \}$  which defines the domain of the problem is convex(easy to
+see). So, we can write the dual problem as:
+$$ \max_\mu \inf_{x\in \mathfrak{C} } \left( f(x) + \sum_{i=1}^4 \lambda_i g_i(x) \right) $$ s.t. $\lambda_i\geq 0$
+
+\section*{Problem 3:}
+(i) Writing $G(x)$ as $$G(x)=\sum_{j=1}^{N} c_j x_j +\sum_{j=1}^{N} x_j \ln x_j - \sum_{j=1}^{N} x_j \ln \left(\sum_{j=1}^{N} x_j 
+\right) $$ then
+\begin{align*}
+\frac{\partial G(x)}{\partial x_1}&=
+c_1 + \ln x_1+\frac{\sum_{j=1}^{N}x_j}{x_1}-\ln\left(\sum_{j=1}^{N}x_j\right)-\frac{\sum_{j=1}^{N}x_j}{x_1}\\
+&= c_1 + \ln x_1-\ln\left(\sum_{j=1}^{N}x_j\right) = c_1 + \ln \left( \frac{x_1}{\sum_{j=1}^{N}x_j} \right)\\
+\nabla G(x)&= \left[ \begin{array}{c}
+c_1 + \ln \left(\frac{x_1}{\sum_{j=1}^{N}x_j}\right) \\
+c_2 + \ln \left(\frac{x_2}{\sum_{j=1}^{N}x_j}\right) \\
+\vdots\\
+c_N + \ln \left(\frac{x_N}{\sum_{j=1}^{N}x_j}\right)
+\end{array} \right]
+\end{align*}
+
+\begin{align*}
+\frac{\partial G(x)}{\partial x_1 \partial x_1} = \frac{1}{x_1} - \frac{1}{\sum_{j=1}^{N}x_j}, 
+\frac{\partial G(x)}{\partial x_1 \partial x_2} = -\frac{1}{\sum_{j=1}^{N}x_j} \\
+D^2G(x) = \left[ \begin{array}{c c c c}
+\frac{1}{x_1}-\frac{1}{\sum_{j=1}^{N}x_j} & \frac{-1}{\sum_{j=1}^{N}x_j} & \dots & \frac{-1}{\sum_{j=1}^{N}x_j} \\
+\frac{-1}{\sum_{j=1}^{N}x_j} & \frac{1}{x_2}-\frac{1}{\sum_{j=1}^{N}x_j} & \dots & \frac{-1}{\sum_{j=1}^{N}x_j} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{-1}{\sum_{j=1}^{N}x_j} & \frac{-1}{\sum_{j=1}^{N}x_j} & \dots & \frac{1}{x_N}-\frac{1}{\sum_{j=1}^{N}x_j}
+\end{array} \right]
+\end{align*}
+\\
+(ii) Let $g_i(x) = -x_i \leq 0, i=1,2,\dots ,N$ and $h_k(x) = \langle a_k,x \rangle - b_k, k=1,2,\dots ,m$ where $a_k$ is the
+$k^{th}$  row of $A$ and $b_k$ is the $k^{th}$ element of $b$. We can write the Lagrangian as:
+$L(x,\lambda,\mu) = G(x) + \sum_{k=1}^N \lambda_k h_k(x) + \sum_{i=1}^N \mu_i g_i(x)$ and the equations that hold at Chemical
+equilibrium $\hat{x}$ are:
+\begin{align*}
+\frac{\partial L}{\partial x }=0, \nabla G(\hat{x})+A^T\lambda-\mu = 0 \\
+A\hat{x} = b
+\mu_i \geq 0, i=1,2,\dots ,N \\
+\mu_i \hat{x}_i = 0 , i=1,2,\dots ,N \\
+\lambda_k \neq 0, k=1,2,\dots ,m \\
+\hat{x}_k \geq 0, k=1,2,\dots ,m
+\end{align*}
+
 \end{document}
 
